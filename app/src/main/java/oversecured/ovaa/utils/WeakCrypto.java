@@ -13,8 +13,8 @@ public class WeakCrypto {
 
     public static String encrypt(String data) {
         try {
-            SecretKeySpec secretKeySpec = new SecretKeySpec(KEY.getBytes(), "AES/CBC/PKCS5Padding");
-            Cipher instance = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            SecretKeySpec secretKeySpec = new SecretKeySpec(KEY.getBytes(), "AES/CBC/NoPadding");
+            Cipher instance = Cipher.getInstance("AES/CBC/NoPadding");
             instance.init(Cipher.ENCRYPT_MODE, secretKeySpec);
             return Base64.encodeToString(instance.doFinal(data.getBytes()), 0);
         }
