@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: trufflehog
+name: Leaked Secrets Scan
 
 # Controls when the workflow will run
 on:
@@ -18,9 +18,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: TruffleHog OSS
-        uses: trufflesecurity/trufflehog@v3.4.3
+        uses: trufflesecurity/trufflehog@main
         with:
           path: ./
           base: ${{ github.event.repository.default_branch }}
           head: HEAD
-          args: --debug
+          extra_args: --debug --only-verified
